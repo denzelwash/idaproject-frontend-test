@@ -3,7 +3,7 @@ export default {
   head: {
     title: 'idaproject-test',
     htmlAttrs: {
-      lang: 'en',
+      lang: 'ru',
     },
     meta: [
       { charset: 'utf-8' },

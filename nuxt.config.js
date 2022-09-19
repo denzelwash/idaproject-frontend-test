@@ -14,6 +14,14 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
+  googleFonts: {
+    families: {
+      'Source Sans Pro': [400, 600],
+    },
+    display: 'swap',
+    preconnect: true,
+  },
+
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: ['normalize.css', '@/assets/scss/main.scss'],
 
@@ -27,6 +35,7 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
+    '@nuxtjs/google-fonts',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules

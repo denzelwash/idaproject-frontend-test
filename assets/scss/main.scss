@@ -1,10 +1,6 @@
-@import './blocks/grid.scss';
-
 body {
-  position: relative;
   font-family: 'Source Sans Pro', 'Arial', sans-serif;
   min-width: 320px;
-  width: 100%;
   font-size: 16px;
   color: #3f3f3f;
   font-weight: 400;
@@ -19,3 +15,15 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+}
+
+@import './blocks/container.scss';
+@import './blocks/forms.scss';

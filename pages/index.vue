@@ -24,8 +24,14 @@ export default {
 .add-product {
   display: grid;
   grid-template-columns: 332px 1fr;
-  gap: 1rem;
-  padding-top: 2rem;
+  gap: 16px;
+  padding: 32px 0;
+  @media (max-width: 1210px) {
+    grid-template-columns: 260px 1fr;
+  }
+  @media (max-width: 800px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .products {
@@ -38,6 +44,12 @@ export default {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 16px;
+    @media (max-width: 1210px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: 576px) {
+      grid-template-columns: 1fr;
+    }
   }
 }
 </style>

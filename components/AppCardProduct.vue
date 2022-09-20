@@ -24,10 +24,13 @@ export default {}
 <style scoped lang="scss">
 .card-product {
   position: relative;
-
+  display: flex;
+  flex-direction: column;
   box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.04),
     0px 6px 10px rgba(0, 0, 0, 0.02);
   cursor: pointer;
+  border-radius: 0px 0px 4px 4px;
+  background: #fffefb;
   &__image {
     position: relative;
     padding-top: 60%;
@@ -51,6 +54,7 @@ export default {}
     background: #fffefb;
     border-radius: 0px 0px 4px 4px;
     overflow: hidden;
+    flex-grow: 1;
   }
   &__title {
     font-size: 20px;

@@ -1,14 +1,11 @@
 <template>
   <div class="card-product">
     <div class="card-product__image">
-      <img :src="require(`~/assets/img/cnt_product.jpg`)" />
+      <img :src="product.url" />
     </div>
     <div class="card-product__text">
-      <h3 class="card-product__title">Наименование товара</h3>
-      <p class="card-product__desc">
-        Довольно-таки интересное описание товара в несколько строк.
-        Довольно-таки интересное описание товара в несколько строк
-      </p>
+      <h3 class="card-product__title">{{ product.title }}</h3>
+      <p class="card-product__desc">{{ product.desc }}</p>
       <b class="card-product__price">10 000 руб.</b>
     </div>
     <button class="card-product__btn-delete">
@@ -18,7 +15,14 @@
 </template>
 
 <script>
-export default {}
+export default {
+  props: {
+    product: {
+      type: Object,
+      required: true,
+    },
+  },
+}
 </script>
 
 <style scoped lang="scss">

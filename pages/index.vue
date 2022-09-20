@@ -7,7 +7,11 @@
           <AppSortSelect></AppSortSelect>
         </div>
         <div class="products__grid">
-          <AppCardProduct></AppCardProduct>
+          <AppCardProduct
+            v-for="product in products"
+            :key="product.id"
+            :product="product"
+          ></AppCardProduct>
         </div>
       </div>
     </div>
@@ -17,6 +21,17 @@
 <script>
 export default {
   name: 'IndexPage',
+  async asyncData({ $axios }) {
+    try {
+      const res = await $axios.get('products.json')
+      return { products: res.data }
+    } catch (e) {}
+  },
+  data() {
+    return {
+      products: [],
+    }
+  },
 }
 </script>
 

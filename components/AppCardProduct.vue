@@ -11,6 +11,9 @@
       </p>
       <b class="card-product__price">10 000 руб.</b>
     </div>
+    <button class="card-product__btn-delete">
+      <img src="~/assets/img/icn_delete.svg" width="16" height="16" />
+    </button>
   </div>
 </template>
 
@@ -20,16 +23,17 @@ export default {}
 
 <style scoped lang="scss">
 .card-product {
-  background: #fffefb;
+  position: relative;
+
   box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.04),
     0px 6px 10px rgba(0, 0, 0, 0.02);
-  border-radius: 4px;
-  overflow: hidden;
+  cursor: pointer;
   &__image {
     position: relative;
     padding-top: 60%;
     border-radius: 4px 4px 0px 0px;
     overflow: hidden;
+    background: #fffefb;
     img {
       position: absolute;
       width: 100%;
@@ -44,6 +48,9 @@ export default {}
     min-height: 223px;
     display: flex;
     flex-direction: column;
+    background: #fffefb;
+    border-radius: 0px 0px 4px 4px;
+    overflow: hidden;
   }
   &__title {
     font-size: 20px;
@@ -58,6 +65,22 @@ export default {}
     margin-top: auto;
     font-size: 24px;
     line-height: 30px;
+  }
+  &__btn-delete {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: -8px;
+    right: -8px;
+    width: 32px;
+    height: 32px;
+    background: #ff8484;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    border: none;
+    overflow: hidden;
+    cursor: pointer;
   }
 }
 </style>

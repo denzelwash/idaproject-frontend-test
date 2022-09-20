@@ -1,5 +1,5 @@
 <template>
-  <div class="card-product">
+  <div class="card-product" @click="cardClick(product.id)">
     <div class="card-product__image">
       <img :src="product.url" />
     </div>
@@ -8,7 +8,10 @@
       <p class="card-product__desc">{{ product.desc }}</p>
       <b class="card-product__price">10 000 руб.</b>
     </div>
-    <button class="card-product__btn-delete">
+    <button
+      class="card-product__btn-delete"
+      @click.stop="cardDeleteClick(product.id)"
+    >
       <img src="~/assets/img/icn_delete.svg" width="16" height="16" />
     </button>
   </div>
@@ -21,6 +24,10 @@ export default {
       type: Object,
       required: true,
     },
+  },
+  methods: {
+    cardClick(id) {},
+    cardDeleteClick(id) {},
   },
 }
 </script>
@@ -35,6 +42,12 @@ export default {
   cursor: pointer;
   border-radius: 0px 0px 4px 4px;
   background: #fffefb;
+  &:hover {
+    .card-product__btn-delete {
+      pointer-events: revert;
+      opacity: 1;
+    }
+  }
   &__image {
     position: relative;
     padding-top: 60%;
@@ -75,8 +88,8 @@ export default {
     line-height: 30px;
   }
   &__btn-delete {
-    position: absolute;
     display: flex;
+    position: absolute;
     align-items: center;
     justify-content: center;
     top: -8px;
@@ -89,6 +102,12 @@ export default {
     border: none;
     overflow: hidden;
     cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s;
+    &:hover {
+      background: #ff4949;
+    }
   }
 }
 </style>

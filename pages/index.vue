@@ -6,7 +6,9 @@
         <div class="products__top">
           <AppSortSelect></AppSortSelect>
         </div>
-        <div class="products__grid"></div>
+        <div class="products__grid">
+          <AppCardProduct></AppCardProduct>
+        </div>
       </div>
     </div>
   </div>

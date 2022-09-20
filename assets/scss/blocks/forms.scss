@@ -40,6 +40,30 @@
     resize: none;
     min-height: 108px;
   }
+  &__select {
+    display: block;
+    width: 120px;
+    min-height: 36px;
+    font-family: inherit;
+    background: #fffefb;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    padding: 6px 24px 8px 16px;
+    font-size: 12px;
+    line-height: 15px;
+    color: #b4b4b4;
+    border: none;
+    outline: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    background: #fffefb url('~assets/img/icn_arrow_down.svg') no-repeat
+      calc(100% - 16px) center / 8px 6px;
+    option {
+      color: #3f3f3f;
+    }
+  }
   &__error {
     display: none;
     margin-bottom: 0;

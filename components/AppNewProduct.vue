@@ -17,6 +17,7 @@
           placeholder="Введите наименование товара"
           name="product_title"
         />
+        <p class="form-group__error">Поле является обязательным</p>
       </div>
       <div class="form-group">
         <label class="form-group__label" for="product-desc"
@@ -29,7 +30,6 @@
           name="product_desc"
           placeholder="Введите описание товара"
         ></textarea>
-        <p class="form-group__error">Поле является обязательным</p>
       </div>
       <div
         class="form-group form-group--required"

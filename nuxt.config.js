@@ -51,6 +51,11 @@ export default {
     browserBaseURL: '/api/',
   },
 
+  loading: {
+    color: '#7bae73',
+    height: '2px',
+  },
+
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
 }

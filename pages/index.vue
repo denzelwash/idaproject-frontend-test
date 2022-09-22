@@ -17,16 +17,21 @@
         </div>
       </div>
     </div>
+    <AppLoader v-if="!products.length"></AppLoader>
   </div>
 </template>
 
 <script>
 export default {
   name: 'IndexPage',
-  data: () => ({}),
+  data: () => ({
+    loading: false,
+  }),
   async fetch() {
     if (!this.$store.getters['products/getProductsCount']) {
+      this.start()
       await this.$store.dispatch('products/fetchProducts')
+      this.finish()
     }
   },
   computed: {
@@ -41,6 +46,12 @@ export default {
     },
     sortProducts(sort) {
       this.$store.commit('products/sortProducts', sort)
+    },
+    start() {
+      this.loading = true
+    },
+    finish() {
+      this.loading = false
     },
   },
 }

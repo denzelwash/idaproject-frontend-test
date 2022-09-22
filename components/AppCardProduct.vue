@@ -51,6 +51,9 @@ export default {
       pointer-events: revert;
       opacity: 1;
     }
+    .card-product__image img {
+      transform: scale(1.05);
+    }
   }
   &__image {
     position: relative;
@@ -65,6 +68,8 @@ export default {
       left: 0;
       top: 0;
       object-fit: cover;
+      transform: scale(1.01);
+      transition: all 0.3s;
     }
   }
   &__text {

@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <NuxtLink to="/test">test</NuxtLink>
     <div class="add-product">
       <AppNewProduct></AppNewProduct>
       <div class="products">
@@ -11,6 +12,7 @@
             v-for="product in products"
             :key="product.id"
             :product="product"
+            @deleteCard="deleteCard"
           ></AppCardProduct>
         </div>
       </div>
@@ -21,13 +23,22 @@
 <script>
 export default {
   name: 'IndexPage',
-  data() {
-    return {
-      products: [],
+  data: () => ({}),
+  async fetch() {
+    if (!this.$store.getters['products/getProductsCount']) {
+      await this.$store.dispatch('products/fetchProducts')
     }
   },
-  async fetch() {
-    this.products = await this.$store.dispatch('products/fetchProducts')
+  computed: {
+    products() {
+      return this.$store.getters['products/getProducts']
+    },
+  },
+  fetchOnServer: false,
+  methods: {
+    deleteCard(id) {
+      this.$store.dispatch('products/deleteProduct', id)
+    },
   },
 }
 </script>

@@ -27,7 +27,9 @@ export default {
   },
   methods: {
     cardClick(id) {},
-    cardDeleteClick(id) {},
+    cardDeleteClick(id) {
+      this.$emit('deleteCard', id)
+    },
   },
 }
 </script>

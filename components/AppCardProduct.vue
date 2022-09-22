@@ -6,7 +6,9 @@
     <div class="card-product__text">
       <h3 class="card-product__title">{{ product.title }}</h3>
       <p class="card-product__desc">{{ product.desc }}</p>
-      <b class="card-product__price">10 000 руб.</b>
+      <b class="card-product__price"
+        >{{ new Intl.NumberFormat('ru-RU').format(product.price) }} руб.</b
+      >
     </div>
     <button
       class="card-product__btn-delete"

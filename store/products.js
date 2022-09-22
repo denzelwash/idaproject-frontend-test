@@ -18,6 +18,27 @@ export const mutations = {
   deleteProduct(state, id) {
     state.products = state.products.filter((product) => product.id !== id)
   },
+  sortProducts(state, sort) {
+    if (sort === 'min') {
+      state.products = state.products.sort((a, b) => {
+        if (+a.price > +b.price) return 1
+        if (+a.price < +b.price) return -1
+        return 0
+      })
+    } else if (sort === 'max') {
+      state.products = state.products.sort((a, b) => {
+        if (+a.price < +b.price) return 1
+        if (+a.price > +b.price) return -1
+        return 0
+      })
+    } else if (sort === 'name') {
+      state.products = state.products.sort((a, b) => {
+        const aText = a.title.toUpperCase()
+        const bText = b.title.toUpperCase()
+        return aText < bText ? -1 : aText > bText ? 1 : 0
+      })
+    }
+  },
 }
 
 export const actions = {

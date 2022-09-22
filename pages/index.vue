@@ -5,7 +5,7 @@
       <AppNewProduct></AppNewProduct>
       <div class="products">
         <div class="products__top">
-          <AppSortSelect></AppSortSelect>
+          <AppSortSelect @sortProducts="sortProducts"></AppSortSelect>
         </div>
         <div class="products__grid">
           <AppCardProduct
@@ -38,6 +38,9 @@ export default {
   methods: {
     deleteCard(id) {
       this.$store.dispatch('products/deleteProduct', id)
+    },
+    sortProducts(sort) {
+      this.$store.commit('products/sortProducts', sort)
     },
   },
 }

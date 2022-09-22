@@ -1,19 +1,22 @@
 <template>
   <div class="new-product-form">
     <h1 class="new-product-form__title">Добавление товара</h1>
-    <form class="new-product-form__form">
-      <div class="form-group form-group--required">
+    <form class="new-product-form__form" @submit.prevent="submit">
+      <div
+        class="form-group form-group--required"
+        :class="{ 'form-group--error': showErrors && !form.title.value.length }"
+      >
         <label class="form-group__label" for="product-name"
           >Наименование товара</label
         >
         <input
           id="product-name"
+          v-model="form.title.value"
           class="form-group__input"
           type="text"
           placeholder="Введите наименование товара"
-          name="product_name"
+          name="product_title"
         />
-        <p class="form-group__error"></p>
       </div>
       <div class="form-group">
         <label class="form-group__label" for="product-desc"
@@ -21,37 +24,49 @@
         >
         <textarea
           id="product-desc"
+          v-model="form.desc.value"
           class="form-group__textarea"
           name="product_desc"
           placeholder="Введите описание товара"
         ></textarea>
-        <p class="form-group__error"></p>
+        <p class="form-group__error">Поле является обязательным</p>
       </div>
-      <div class="form-group form-group--required">
+      <div
+        class="form-group form-group--required"
+        :class="{ 'form-group--error': showErrors && !form.image.value.length }"
+      >
         <label class="form-group__label" for="product-link"
           >Ссылка на изображение товара</label
         >
         <input
           id="product-link"
+          v-model="form.image.value"
           class="form-group__input"
-          type="url"
+          type="text"
           placeholder="Введите ссылку"
           name="product_link"
         />
-        <p class="form-group__error"></p>
+        <p class="form-group__error">Поле является обязательным</p>
       </div>
-      <div class="form-group form-group--required">
+      <div
+        class="form-group form-group--required"
+        :class="{ 'form-group--error': showErrors && !form.price.value.length }"
+      >
         <label class="form-group__label" for="product-price">Цена товара</label>
         <input
           id="product-price"
+          v-model="form.price.value"
           class="form-group__input"
           type="number"
           placeholder="Введите цену"
           name="product_price"
         />
-        <p class="form-group__error"></p>
+        <p class="form-group__error">Поле является обязательным</p>
       </div>
-      <button class="btn new-product-form__btn-submit" disabled>
+      <button
+        class="btn new-product-form__btn-submit"
+        :disabled="submitBtnDisabled"
+      >
         Добавить товар
       </button>
     </form>
@@ -59,7 +74,55 @@
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      form: {
+        title: {
+          value: '',
+          required: true,
+        },
+        desc: {
+          value: '',
+          required: false,
+        },
+        image: {
+          value: '',
+          required: true,
+        },
+        price: {
+          value: '',
+          required: true,
+        },
+      },
+      submitBtnDisabled: true,
+      showErrors: false,
+    }
+  },
+  watch: {
+    form: {
+      handler(val) {
+        this.checkFormFields()
+      },
+      deep: true,
+    },
+  },
+  methods: {
+    submit() {
+      this.showErrors = true
+      console.log('submit')
+    },
+    checkFormFields() {
+      let disableSubmit = false
+      Object.values(this.form).forEach((field) => {
+        if (field.required && !field.value.length) {
+          disableSubmit = true
+        }
+      })
+      this.submitBtnDisabled = disableSubmit
+    },
+  },
+}
 </script>
 
 <style lang="scss" scoped>

@@ -118,3 +118,12 @@ input::-webkit-inner-spin-button {
     right: -4px;
   }
 }
+
+.form-group--error {
+  .form-group__input {
+    border-color: #ff8484;
+  }
+  .form-group__error {
+    display: block;
+  }
+}

@@ -21,16 +21,13 @@
 <script>
 export default {
   name: 'IndexPage',
-  async asyncData({ $axios }) {
-    try {
-      const res = await $axios.get('products.json')
-      return { products: res.data }
-    } catch (e) {}
-  },
   data() {
     return {
       products: [],
     }
+  },
+  async fetch() {
+    this.products = await this.$store.dispatch('products/fetchProducts')
   },
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <NuxtLink to="/test">test</NuxtLink>
-    <div class="add-product">
+    <section class="add-product">
       <AppNewProduct></AppNewProduct>
       <div class="products">
         <div class="products__top">
@@ -16,7 +16,7 @@
           ></AppCardProduct>
         </div>
       </div>
-    </div>
+    </section>
     <AppLoader v-if="!products.length"></AppLoader>
   </div>
 </template>

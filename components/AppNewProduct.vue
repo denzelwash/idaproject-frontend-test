@@ -1,6 +1,6 @@
 <template>
   <div class="new-product-form">
-    <h1 class="new-product-form__title">Добавление товара</h1>
+    <h2 class="new-product-form__title">Добавление товара</h2>
     <form class="new-product-form__form" @submit.prevent="submit">
       <div
         class="form-group form-group--required"

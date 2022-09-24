@@ -18,6 +18,9 @@ export const mutations = {
   deleteProduct(state, id) {
     state.products = state.products.filter((product) => product.id !== id)
   },
+  addProduct(state, product) {
+    state.products.push(product)
+  },
   sortProducts(state, sort) {
     if (sort === 'min') {
       state.products = state.products.sort((a, b) => {
@@ -52,8 +55,17 @@ export const actions = {
   },
   deleteProduct({ commit }, id) {
     try {
-      // запрос к api
+      // удаление на бэке
+      // ...
       commit('deleteProduct', id)
+    } catch (e) {}
+  },
+  addNewProduct({ commit }, product) {
+    try {
+      // добавление на бэке
+      // ...
+      console.log(product)
+      commit('addProduct', product)
     } catch (e) {}
   },
 }

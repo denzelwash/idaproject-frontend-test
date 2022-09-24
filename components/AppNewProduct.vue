@@ -70,6 +70,7 @@
         Добавить товар
       </button>
     </form>
+    <AppLoader v-if="loading"></AppLoader>
   </div>
 </template>
 
@@ -95,31 +96,45 @@ export default {
           required: true,
         },
       },
-      submitBtnDisabled: true,
+      loading: false,
       showErrors: false,
     }
   },
+  computed: {
+    submitBtnDisabled() {
+      return (
+        !this.form.title.value ||
+        !this.form.image.value ||
+        !this.form.price.value
+      )
+    },
+  },
   watch: {
-    form: {
-      handler(val) {
-        this.checkFormFields()
-      },
-      deep: true,
+    submitBtnDisabled(disabled) {
+      if (!disabled) {
+        this.showErrors = true
+      }
     },
   },
   methods: {
-    submit() {
-      this.showErrors = true
-      console.log('submit')
-    },
-    checkFormFields() {
-      let disableSubmit = false
-      Object.values(this.form).forEach((field) => {
-        if (field.required && !field.value.length) {
-          disableSubmit = true
+    async submit() {
+      const formValid =
+        !!this.form.title.value &&
+        !!this.form.image.value &&
+        !!this.form.price.value
+      if (formValid) {
+        const randomId = parseInt(Math.random() * 1000000)
+        const newProduct = {
+          id: randomId,
+          title: this.form.title.value,
+          desc: this.form.desc.value,
+          price: this.form.price.value,
+          url: this.form.image.value,
         }
-      })
-      this.submitBtnDisabled = disableSubmit
+        this.loading = true
+        await this.$store.dispatch('products/addNewProduct', newProduct)
+        this.loading = false
+      }
     },
   },
 }

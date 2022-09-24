@@ -7,7 +7,7 @@
         <div class="products__top">
           <AppSortSelect @sortProducts="sortProducts"></AppSortSelect>
         </div>
-        <div class="products__grid">
+        <div v-if="products.length" class="products__grid">
           <AppCardProduct
             v-for="product in products"
             :key="product.id"
@@ -17,7 +17,7 @@
         </div>
       </div>
     </section>
-    <AppLoader v-if="!products.length"></AppLoader>
+    <AppLoader v-if="loading"></AppLoader>
   </div>
 </template>
 
@@ -25,13 +25,13 @@
 export default {
   name: 'IndexPage',
   data: () => ({
-    loading: false,
+    loading: true,
   }),
   async fetch() {
     if (!this.$store.getters['products/getProductsCount']) {
-      this.start()
+      this.loading = true
       await this.$store.dispatch('products/fetchProducts')
-      this.finish()
+      this.loading = false
     }
   },
   computed: {
@@ -41,17 +41,13 @@ export default {
   },
   fetchOnServer: false,
   methods: {
-    deleteCard(id) {
-      this.$store.dispatch('products/deleteProduct', id)
+    async deleteCard(id) {
+      this.loading = true
+      await this.$store.dispatch('products/deleteProduct', id)
+      this.loading = false
     },
     sortProducts(sort) {
       this.$store.commit('products/sortProducts', sort)
-    },
-    start() {
-      this.loading = true
-    },
-    finish() {
-      this.loading = false
     },
   },
 }

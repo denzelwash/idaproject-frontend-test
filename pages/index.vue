@@ -25,7 +25,7 @@
 export default {
   name: 'IndexPage',
   data: () => ({
-    loading: true,
+    loading: false,
   }),
   async fetch() {
     if (!this.$store.getters['products/getProductsCount']) {
@@ -39,7 +39,7 @@ export default {
       return this.$store.getters['products/getProducts']
     },
   },
-  fetchOnServer: false,
+  // fetchOnServer: false,
   methods: {
     async deleteCard(id) {
       this.loading = true

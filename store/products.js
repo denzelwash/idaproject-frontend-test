@@ -58,14 +58,17 @@ export const actions = {
       // удаление на бэке
       // ...
       commit('deleteProduct', id)
+      // имитация асинхрона
+      return new Promise((resolve) => setTimeout(resolve, 200))
     } catch (e) {}
   },
   addNewProduct({ commit }, product) {
     try {
       // добавление на бэке
       // ...
-      console.log(product)
       commit('addProduct', product)
+      // имитация асинхрона
+      return new Promise((resolve) => setTimeout(resolve, 200))
     } catch (e) {}
   },
 }

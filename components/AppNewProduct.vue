@@ -134,6 +134,10 @@ export default {
         this.loading = true
         await this.$store.dispatch('products/addNewProduct', newProduct)
         this.loading = false
+        Object.values(this.form).forEach((item) => {
+          item.value = ''
+        })
+        this.showErrors = false
       }
     },
   },

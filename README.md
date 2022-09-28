@@ -4,7 +4,7 @@
 <br>
 Для запуска локально установить node 16.14.2
 <br>
-Здесь можно [посмотреть](http://works.denisobolevich.ru/idaproject/)
+[Здесь](http://works.denisobolevich.ru/idaproject/) сборка после nuxt generate
 
 ## Запуск локально
 

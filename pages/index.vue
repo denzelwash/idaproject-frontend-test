@@ -7,14 +7,21 @@
         <div class="products__top">
           <AppSortSelect @sortProducts="sortProducts"></AppSortSelect>
         </div>
-        <div v-if="products.length" class="products__grid">
-          <AppCardProduct
-            v-for="product in products"
-            :key="product.id"
-            :product="product"
-            @deleteCard="deleteCard"
-          ></AppCardProduct>
-        </div>
+        <template v-if="products.length">
+          <transition-group
+            name="fade"
+            tag="div"
+            class="products__grid"
+            mode="out-in"
+          >
+            <AppCardProduct
+              v-for="product in products"
+              :key="product.id"
+              :product="product"
+              @deleteCard="deleteCard"
+            ></AppCardProduct>
+          </transition-group>
+        </template>
       </div>
     </section>
     <AppLoader v-if="loading"></AppLoader>
@@ -24,6 +31,7 @@
 <script>
 export default {
   name: 'IndexPage',
+  transition: 'fade',
   data: () => ({
     loading: false,
   }),
@@ -74,6 +82,7 @@ export default {
     margin-bottom: 16px;
   }
   &__grid {
+    position: relative;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 16px;
@@ -84,5 +93,15 @@ export default {
       grid-template-columns: 1fr;
     }
   }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.6s;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
 }
 </style>

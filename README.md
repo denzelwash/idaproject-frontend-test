@@ -4,7 +4,7 @@
 <br>
 Для запуска локально установить node 16.14.2
 <br>
-Здесь можно [посмотреть](https://works.denisobolevich.ru/idaproject-test/).
+Здесь можно [посмотреть](https://works.denisobolevich.ru/idaproject/).
 
 ## Запуск локально
 

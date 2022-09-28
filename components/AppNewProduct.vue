@@ -70,6 +70,9 @@
       >
         Добавить товар
       </button>
+      <div v-if="showSuccessMessage" class="new-product-form__form-success">
+        <span>Товар успешно добавлен!</span>
+      </div>
     </form>
     <AppLoader v-if="loading"></AppLoader>
   </div>
@@ -100,6 +103,7 @@ export default {
       },
       loading: false,
       showErrors: false,
+      showSuccessMessage: false,
     }
   },
   computed: {
@@ -126,6 +130,7 @@ export default {
         !!this.form.price.value
       if (formValid) {
         const randomId = parseInt(Math.random() * 1000000)
+        const self = this
         const newProduct = {
           id: randomId,
           title: this.form.title.value,
@@ -136,10 +141,15 @@ export default {
         this.loading = true
         await this.$store.dispatch('products/addNewProduct', newProduct)
         this.loading = false
+        this.showSuccessMessage = true
         Object.values(this.form).forEach((item) => {
           item.value = ''
         })
+        this.form.price.valueFormatted = ''
         this.showErrors = false
+        setTimeout(function (e) {
+          self.showSuccessMessage = false
+        }, 2000)
       }
     },
     priceHandler(e) {
@@ -164,11 +174,29 @@ export default {
     line-height: 35px;
   }
   &__form {
+    position: relative;
     padding: 24px;
     background: #fffefb;
     box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.04),
       0px 6px 10px rgba(0, 0, 0, 0.02);
     border-radius: 4px;
+    &-success {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      background-color: #fff;
+      border-radius: inherit;
+      font-size: 24px;
+      font-weight: 700;
+      color: #7bae73;
+      text-align: center;
+    }
   }
   &__btn-submit {
     width: 100%;

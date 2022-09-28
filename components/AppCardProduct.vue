@@ -117,6 +117,10 @@ export default {
     &:hover {
       background: #ff4949;
     }
+    @media (hover: none) and (pointer: coarse) {
+      pointer-events: revert;
+      opacity: 1;
+    }
   }
 }
 </style>

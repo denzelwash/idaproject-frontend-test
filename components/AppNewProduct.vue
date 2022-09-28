@@ -55,11 +55,12 @@
         <label class="form-group__label" for="product-price">Цена товара</label>
         <input
           id="product-price"
-          v-model="form.price.value"
+          :value="form.price.valueFormatted"
           class="form-group__input"
-          type="number"
+          type="text"
           placeholder="Введите цену"
           name="product_price"
+          @input="priceHandler"
         />
         <p class="form-group__error">Поле является обязательным</p>
       </div>
@@ -93,6 +94,7 @@ export default {
         },
         price: {
           value: '',
+          valueFormatted: '',
           required: true,
         },
       },
@@ -139,6 +141,15 @@ export default {
         })
         this.showErrors = false
       }
+    },
+    priceHandler(e) {
+      const price = e.target.value
+      const clearPrice = price.replace(/[^+\d]/g, '')
+      const formattedPrice = new Intl.NumberFormat('ru-RU').format(clearPrice)
+      this.form.price.valueFormatted = ' '
+      this.form.price.value = clearPrice
+      this.form.price.valueFormatted =
+        formattedPrice === '0' ? '' : formattedPrice
     },
   },
 }

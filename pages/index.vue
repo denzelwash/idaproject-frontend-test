@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    <NuxtLink to="/test">test</NuxtLink>
     <section class="add-product">
       <AppNewProduct></AppNewProduct>
       <div class="products">

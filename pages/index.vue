@@ -31,7 +31,6 @@
 <script>
 export default {
   name: 'IndexPage',
-  transition: 'fade',
   data: () => ({
     loading: false,
   }),

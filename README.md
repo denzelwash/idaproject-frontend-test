@@ -1,8 +1,9 @@
 # idaproject-test
 
 Тестовое задание по фронту на Nuxt
+<br>
 Для запуска локально установить node 16.14.2
-
+<br>
 Здесь можно [посмотреть](https://works.denisobolevich.ru/idaproject-test/).
 
 ## Запуск локально

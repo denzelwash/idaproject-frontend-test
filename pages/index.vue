@@ -64,7 +64,7 @@ export default {
   display: grid;
   grid-template-columns: 332px 1fr;
   gap: 16px;
-  padding: 32px 0;
+  padding: 32px 0 80px;
   @media (max-width: 1210px) {
     grid-template-columns: 260px 1fr;
   }

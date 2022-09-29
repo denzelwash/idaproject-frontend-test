@@ -81,14 +81,23 @@ export default {
   }
   &__grid {
     position: relative;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    @media (max-width: 1210px) {
-      grid-template-columns: repeat(2, 1fr);
-    }
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -8px;
+    margin-right: -8px;
     @media (max-width: 576px) {
-      grid-template-columns: 1fr;
+      margin: 0;
+    }
+    .card-product {
+      width: calc((100% - 48px) / 3);
+      margin: 0 8px 16px;
+      @media (max-width: 1210px) {
+        width: calc((100% - 32px) / 2);
+      }
+      @media (max-width: 576px) {
+        width: 100%;
+        margin: 0 0 16px;
+      }
     }
   }
 }

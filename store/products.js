@@ -19,7 +19,7 @@ export const mutations = {
     state.products = state.products.filter((product) => product.id !== id)
   },
   addProduct(state, product) {
-    state.products.push(product)
+    state.products.unshift(product)
   },
   sortProducts(state, sort) {
     if (sort === 'min') {

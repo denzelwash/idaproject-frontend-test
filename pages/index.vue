@@ -6,12 +6,7 @@
         <div class="products__top">
           <AppSortSelect @sortProducts="sortProducts"></AppSortSelect>
         </div>
-        <transition-group
-          name="card"
-          tag="div"
-          class="products__grid"
-          mode="out-in"
-        >
+        <transition-group name="card" tag="div" class="products__grid">
           <AppCardProduct
             v-for="product in products"
             :key="product.id"

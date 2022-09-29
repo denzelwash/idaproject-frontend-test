@@ -6,21 +6,19 @@
         <div class="products__top">
           <AppSortSelect @sortProducts="sortProducts"></AppSortSelect>
         </div>
-        <template v-if="products.length">
-          <transition-group
-            name="fade"
-            tag="div"
-            class="products__grid"
-            mode="out-in"
-          >
-            <AppCardProduct
-              v-for="product in products"
-              :key="product.id"
-              :product="product"
-              @deleteCard="deleteCard"
-            ></AppCardProduct>
-          </transition-group>
-        </template>
+        <transition-group
+          name="card"
+          tag="div"
+          class="products__grid"
+          mode="out-in"
+        >
+          <AppCardProduct
+            v-for="product in products"
+            :key="product.id"
+            :product="product"
+            @deleteCard="deleteCard"
+          ></AppCardProduct>
+        </transition-group>
       </div>
     </section>
     <AppLoader v-if="loading"></AppLoader>
@@ -91,6 +89,7 @@ export default {
     .card-product {
       width: calc((100% - 48px) / 3);
       margin: 0 8px 16px;
+      transition: all 1s;
       @media (max-width: 1210px) {
         width: calc((100% - 32px) / 2);
       }
@@ -102,13 +101,14 @@ export default {
   }
 }
 
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.6s;
+.card-enter,
+.card-leave-to {
+  opacity: 0;
+  transform: scale(0.25);
+  z-index: -1;
 }
 
-.fade-enter,
-.fade-leave-active {
-  opacity: 0;
+.card-leave-active {
+  position: absolute;
 }
 </style>

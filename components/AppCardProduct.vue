@@ -101,6 +101,7 @@ export default {
     position: absolute;
     align-items: center;
     justify-content: center;
+    padding: 0;
     top: -8px;
     right: -8px;
     width: 32px;
